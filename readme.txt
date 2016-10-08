@@ -1,3 +1,3 @@
 hahaha
 echo
-echo 
+:echo 
