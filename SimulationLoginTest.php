@@ -61,7 +61,7 @@ class SimulationLogin {
         preg_match_all('/class="td_left">[\S\s]*?align="left">([\S\s]*?)<\/div>/',$htmlStr,$arr);
         return [
             'number'=>trim($arr[1][0]),             //学号
-            'name'=>trim($arr[1][1]),               //姓名
+            'name'=>trim($arr[1][1]),               //姓名 
             'whenComeIn'=>trim($arr[1][2]),         //入学年
             'majors'=>trim($arr[1][3]),             //专业
             'email'=>trim($arr[1][5]),              //邮箱
