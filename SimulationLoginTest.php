@@ -196,7 +196,7 @@ class SimulationLogin {
     {
         echo '-----------------------------------课表-------------------<br>';
         echo '下面打印的是一个三维数组<br>';
-        echo '$arr[i][j][k] : i表示第几周，j表示星期几，k表示第几节课';
+        echo '$arr[i][j][k] : i表示第几周，j表示星期几，k表示第几节课。其中classroom和subject为0表示该时间段没课';
         self::write($data);
     }
 
