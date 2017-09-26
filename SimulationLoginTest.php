@@ -18,13 +18,15 @@ class SimulationLogin {
     private static $http = [
         'login'=>'http://class.sise.com.cn:7001/sise/login.jsp',      //登录界面
         'schedule'=>'http://class.sise.com.cn:7001/sise/module/student_schedular/student_schedular.jsp',        //课表界面
-        'dataToLogin'=>'http://class.sise.com.cn:7001/sise/login_check_login.jsp',              //登录地址 
-        'perMsg'=>'http://class.sise.com.cn:7001/SISEWeb/pub/course/courseViewAction.do?method=doMain&studentid=VPix7t5zG8w='   //个人信息界面
+        'dataToLogin'=>'http://class.sise.com.cn:7001/sise/login_check_login.jsp',              //登录地址
+        'perMsg'=>'http://class.sise.com.cn:7001/SISEWeb/pub/course/courseViewAction.do?method=doMain&studentid=',   //个人信息界面
+        'index'=>'http://class.sise.com.cn:7001/sise/module/student_states/student_select_class/main.jsp'       //mysise主页
     ];
     public static $loginData = [
         'username'=>null,
         'password'=>null
     ];
+    private static $studentId  = null;
     //初始化模拟登录必要的东西
     static function init()
     {
@@ -45,6 +47,9 @@ class SimulationLogin {
         $loginRes = self::login($loginData);
         if($loginRes)
         {
+            $str = self::getHtmlByGet(self::$http['index']);
+            self::getStudentId($str);
+            self::$http['perMsg'] .= self::$studentId;
             $str = self::getHtmlByGet(self::$http['perMsg']);
             $perMsgArr = self::getPerMsg($str);
             self::perMsgDisplay($perMsgArr);
@@ -52,8 +57,14 @@ class SimulationLogin {
             $scheduleArr = self::getScheduleArr($str);
             self::scheduleDisplay($scheduleArr);
         }else{
-            echo '<h2>模拟登录失败，请检查学号和密码是否正确</h2>'; 
+            echo '<h2>模拟登录失败，请检查学号和密码是否正确</h2>';
         }
+    }
+    //获取学生ID
+    static function getStudentId($str)
+    {
+        preg_match('/course\/courseViewAction.do\?method=doMain&studentid=([\S]*?)\'/',$str,$arr);
+        self::$studentId = $arr[1];
     }
     //获取个人的信息，演示的代码只获取少量信息，其它的靠你了
     static function getPerMsg($htmlStr)
@@ -61,7 +72,7 @@ class SimulationLogin {
         preg_match_all('/class="td_left">[\S\s]*?align="left">([\S\s]*?)<\/div>/',$htmlStr,$arr);
         return [
             'number'=>trim($arr[1][0]),             //学号
-            'name'=>trim($arr[1][1]),               //姓名 
+            'name'=>trim($arr[1][1]),               //姓名
             'whenComeIn'=>trim($arr[1][2]),         //入学年
             'majors'=>trim($arr[1][3]),             //专业
             'email'=>trim($arr[1][5]),              //邮箱
@@ -195,8 +206,8 @@ class SimulationLogin {
     static function scheduleDisplay($data)
     {
         echo '-----------------------------------课表-------------------<br>';
-        echo '下面打印的是一个三维数组<br>';
-        echo '$arr[i][j][k] : i表示第几周，j表示星期几，k表示第几节课。其中classroom和subject为0表示该时间段没课';
+        echo '下面打印的是一个课程表三维数组<br>';
+        echo '$arr[i][j][k] : i表示第几周，j表示星期几，k表示第几节课。其中classroom和subject都为0表示该时间段没课';
         self::write($data);
     }
 
