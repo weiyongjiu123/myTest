@@ -18,7 +18,7 @@ class SimulationLogin {
     private static $http = [
         'login'=>'http://class.sise.com.cn:7001/sise/login.jsp',      //登录界面
         'schedule'=>'http://class.sise.com.cn:7001/sise/module/student_schedular/student_schedular.jsp',        //课表界面
-        'dataToLogin'=>'http://class.sise.com.cn:7001/sise/login_check_login.jsp',              //登录地址
+        'dataToLogin'=>'http://class.sise.com.cn:7001/sise/login_check_login.jsp',              //登录地址 
         'perMsg'=>'http://class.sise.com.cn:7001/SISEWeb/pub/course/courseViewAction.do?method=doMain&studentid=VPix7t5zG8w='   //个人信息界面
     ];
     public static $loginData = [
