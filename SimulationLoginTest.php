@@ -52,7 +52,7 @@ class SimulationLogin {
             $scheduleArr = self::getScheduleArr($str);
             self::scheduleDisplay($scheduleArr);
         }else{
-            echo '<h2>模拟登录失败，请检查学号和密码是否正确</h2>';
+            echo '<h2>模拟登录失败，请检查学号和密码是否正确</h2>'; 
         }
     }
     //获取个人的信息，演示的代码只获取少量信息，其它的靠你了
