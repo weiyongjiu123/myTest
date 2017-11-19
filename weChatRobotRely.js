@@ -57,7 +57,7 @@ function test_getRobotRely(content) {
         data:{"content":content},
         jsonp:'callback',
         jsonpCallback:'getName',
-        url:'https://smallsi.com:9504'
-    })
+        url:'https://smallsi.com:9504'          //这个是后台的地址，如果你有远程服务器的后台地址，可以把这地址改为你的,
+    })                                          //如果没有后台地址，默认就可以了，无效修改
 }
  
