@@ -50,5 +50,5 @@ class Chat{
             return;
         }
     }
-}
+} 
 
