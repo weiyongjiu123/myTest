@@ -1,3 +1,6 @@
+//微信接入机器人的js代码
+
+
 var test_isRobotSend = true;
 function inheritObject(o) {
     function F() {
