@@ -202,7 +202,7 @@ class SimulationLogin {
         echo '-----------------------个人信息---------------------<br>';
         self::write($data);
     }
-    //输出课表信息数组
+    //输出课表信息数组 
     static function scheduleDisplay($data)
     {
         echo '-----------------------------------课表-------------------<br>';
