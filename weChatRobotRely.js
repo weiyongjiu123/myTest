@@ -1,5 +1,19 @@
 //微信接入机器人的js代码
 
+/**
+ * @author wyj
+ * @description 微信网页版接入机器人
+ * 1.登陆微信网页版
+ * 2.选择聊天窗口
+ * 3.控制台输出_chatContent变量 ，找到自己选择的窗口的Id
+ * 4.在下列代码找到 _chatContent.filehelper = new ArrayOfMine(); ，把filehelper改为窗口Id
+ * 5.本代码需要外网能访问的后台服务器，把对应的php下载并部署。如果没有后台地址，保持默认也可以
+ * 6.需改后，将代码复制到控制台上并运行，然后在聊天窗口发一条信息，就可以看到机器人回复了
+ *
+ */
+
+
+
 
 var test_isRobotSend = true;
 function inheritObject(o) {
